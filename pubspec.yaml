@@ -42,6 +42,8 @@ dependencies:
   fluttertoast: ^8.0.9
   dio: ^4.0.6
   dartz: ^0.10.1
+  connectivity_plus: ^2.3.9
+  build_runner: ^2.3.2
 
 dev_dependencies:
   flutter_test:
