@@ -1,4 +1,7 @@
+import 'package:stock_market/presentation/pages/home_page.dart';
+
 import '../data/utils/exports.dart';
+
 
 class NavigatorPath extends StatelessWidget {
   const NavigatorPath({Key? key}) : super(key: key);

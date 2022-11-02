@@ -5,7 +5,7 @@
 
 
 
-import 'package:stock_market/app/navigator.dart';
+import 'package:stock_market/app/app.dart';
 import 'package:stock_market/data/utils/exports.dart';
 import 'package:stock_market/environment.dart';
 
