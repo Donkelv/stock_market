@@ -21,8 +21,8 @@ mixin _$HistoricalDataState {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(HistoricalDataModel data) data,
-    required TResult Function(Failure error) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,8 +30,8 @@ mixin _$HistoricalDataState {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(HistoricalDataModel data)? data,
-    TResult? Function(Failure error)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,8 +39,8 @@ mixin _$HistoricalDataState {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(HistoricalDataModel data)? data,
-    TResult Function(Failure error)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,8 +137,8 @@ class _$_HistoricalDataStateOffline implements _HistoricalDataStateOffline {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(HistoricalDataModel data) data,
-    required TResult Function(Failure error) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String error) error,
   }) {
     return offline();
   }
@@ -149,8 +149,8 @@ class _$_HistoricalDataStateOffline implements _HistoricalDataStateOffline {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(HistoricalDataModel data)? data,
-    TResult? Function(Failure error)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String error)? error,
   }) {
     return offline?.call();
   }
@@ -161,8 +161,8 @@ class _$_HistoricalDataStateOffline implements _HistoricalDataStateOffline {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(HistoricalDataModel data)? data,
-    TResult Function(Failure error)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (offline != null) {
@@ -261,8 +261,8 @@ class _$_HistoricalDataStateInitial implements _HistoricalDataStateInitial {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(HistoricalDataModel data) data,
-    required TResult Function(Failure error) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String error) error,
   }) {
     return initial();
   }
@@ -273,8 +273,8 @@ class _$_HistoricalDataStateInitial implements _HistoricalDataStateInitial {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(HistoricalDataModel data)? data,
-    TResult? Function(Failure error)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String error)? error,
   }) {
     return initial?.call();
   }
@@ -285,8 +285,8 @@ class _$_HistoricalDataStateInitial implements _HistoricalDataStateInitial {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(HistoricalDataModel data)? data,
-    TResult Function(Failure error)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -385,8 +385,8 @@ class _$_HistoricalDataStateLoading implements _HistoricalDataStateLoading {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(HistoricalDataModel data) data,
-    required TResult Function(Failure error) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String error) error,
   }) {
     return loading();
   }
@@ -397,8 +397,8 @@ class _$_HistoricalDataStateLoading implements _HistoricalDataStateLoading {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(HistoricalDataModel data)? data,
-    TResult? Function(Failure error)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String error)? error,
   }) {
     return loading?.call();
   }
@@ -409,8 +409,8 @@ class _$_HistoricalDataStateLoading implements _HistoricalDataStateLoading {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(HistoricalDataModel data)? data,
-    TResult Function(Failure error)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -470,7 +470,7 @@ abstract class _$$_HistoricalDataStateDataCopyWith<$Res> {
           $Res Function(_$_HistoricalDataStateData) then) =
       __$$_HistoricalDataStateDataCopyWithImpl<$Res>;
   @useResult
-  $Res call({HistoricalDataModel data});
+  $Res call({List<Data> data});
 }
 
 /// @nodoc
@@ -488,9 +488,9 @@ class __$$_HistoricalDataStateDataCopyWithImpl<$Res>
   }) {
     return _then(_$_HistoricalDataStateData(
       data: null == data
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as HistoricalDataModel,
+              as List<Data>,
     ));
   }
 }
@@ -498,10 +498,15 @@ class __$$_HistoricalDataStateDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HistoricalDataStateData implements _HistoricalDataStateData {
-  const _$_HistoricalDataStateData({required this.data});
+  const _$_HistoricalDataStateData({required final List<Data> data})
+      : _data = data;
 
+  final List<Data> _data;
   @override
-  final HistoricalDataModel data;
+  List<Data> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -513,11 +518,12 @@ class _$_HistoricalDataStateData implements _HistoricalDataStateData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HistoricalDataStateData &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -533,8 +539,8 @@ class _$_HistoricalDataStateData implements _HistoricalDataStateData {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(HistoricalDataModel data) data,
-    required TResult Function(Failure error) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String error) error,
   }) {
     return data(this.data);
   }
@@ -545,8 +551,8 @@ class _$_HistoricalDataStateData implements _HistoricalDataStateData {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(HistoricalDataModel data)? data,
-    TResult? Function(Failure error)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String error)? error,
   }) {
     return data?.call(this.data);
   }
@@ -557,8 +563,8 @@ class _$_HistoricalDataStateData implements _HistoricalDataStateData {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(HistoricalDataModel data)? data,
-    TResult Function(Failure error)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -609,10 +615,10 @@ class _$_HistoricalDataStateData implements _HistoricalDataStateData {
 }
 
 abstract class _HistoricalDataStateData implements HistoricalDataState {
-  const factory _HistoricalDataStateData(
-      {required final HistoricalDataModel data}) = _$_HistoricalDataStateData;
+  const factory _HistoricalDataStateData({required final List<Data> data}) =
+      _$_HistoricalDataStateData;
 
-  HistoricalDataModel get data;
+  List<Data> get data;
   @JsonKey(ignore: true)
   _$$_HistoricalDataStateDataCopyWith<_$_HistoricalDataStateData>
       get copyWith => throw _privateConstructorUsedError;
@@ -625,7 +631,7 @@ abstract class _$$_HistoricalDataStateErrorCopyWith<$Res> {
           $Res Function(_$_HistoricalDataStateError) then) =
       __$$_HistoricalDataStateErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({Failure error});
+  $Res call({String error});
 }
 
 /// @nodoc
@@ -645,7 +651,7 @@ class __$$_HistoricalDataStateErrorCopyWithImpl<$Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as Failure,
+              as String,
     ));
   }
 }
@@ -656,7 +662,7 @@ class _$_HistoricalDataStateError implements _HistoricalDataStateError {
   const _$_HistoricalDataStateError({required this.error});
 
   @override
-  final Failure error;
+  final String error;
 
   @override
   String toString() {
@@ -687,8 +693,8 @@ class _$_HistoricalDataStateError implements _HistoricalDataStateError {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(HistoricalDataModel data) data,
-    required TResult Function(Failure error) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String error) error,
   }) {
     return error(this.error);
   }
@@ -699,8 +705,8 @@ class _$_HistoricalDataStateError implements _HistoricalDataStateError {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(HistoricalDataModel data)? data,
-    TResult? Function(Failure error)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -711,8 +717,8 @@ class _$_HistoricalDataStateError implements _HistoricalDataStateError {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(HistoricalDataModel data)? data,
-    TResult Function(Failure error)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -763,10 +769,10 @@ class _$_HistoricalDataStateError implements _HistoricalDataStateError {
 }
 
 abstract class _HistoricalDataStateError implements HistoricalDataState {
-  const factory _HistoricalDataStateError({required final Failure error}) =
+  const factory _HistoricalDataStateError({required final String error}) =
       _$_HistoricalDataStateError;
 
-  Failure get error;
+  String get error;
   @JsonKey(ignore: true)
   _$$_HistoricalDataStateErrorCopyWith<_$_HistoricalDataStateError>
       get copyWith => throw _privateConstructorUsedError;

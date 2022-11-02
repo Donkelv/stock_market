@@ -21,8 +21,8 @@ mixin _$TickerState {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TickerModel data) data,
-    required TResult Function(Failure failure) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,8 +30,8 @@ mixin _$TickerState {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(TickerModel data)? data,
-    TResult? Function(Failure failure)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,8 +39,8 @@ mixin _$TickerState {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TickerModel data)? data,
-    TResult Function(Failure failure)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,8 +133,8 @@ class _$_TickerStateOffline implements _TickerStateOffline {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TickerModel data) data,
-    required TResult Function(Failure failure) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String failure) error,
   }) {
     return offline();
   }
@@ -145,8 +145,8 @@ class _$_TickerStateOffline implements _TickerStateOffline {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(TickerModel data)? data,
-    TResult? Function(Failure failure)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String failure)? error,
   }) {
     return offline?.call();
   }
@@ -157,8 +157,8 @@ class _$_TickerStateOffline implements _TickerStateOffline {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TickerModel data)? data,
-    TResult Function(Failure failure)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
     if (offline != null) {
@@ -253,8 +253,8 @@ class _$_TickerStateInitial implements _TickerStateInitial {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TickerModel data) data,
-    required TResult Function(Failure failure) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String failure) error,
   }) {
     return initial();
   }
@@ -265,8 +265,8 @@ class _$_TickerStateInitial implements _TickerStateInitial {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(TickerModel data)? data,
-    TResult? Function(Failure failure)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String failure)? error,
   }) {
     return initial?.call();
   }
@@ -277,8 +277,8 @@ class _$_TickerStateInitial implements _TickerStateInitial {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TickerModel data)? data,
-    TResult Function(Failure failure)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -373,8 +373,8 @@ class _$_TickerStateLoading implements _TickerStateLoading {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TickerModel data) data,
-    required TResult Function(Failure failure) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String failure) error,
   }) {
     return loading();
   }
@@ -385,8 +385,8 @@ class _$_TickerStateLoading implements _TickerStateLoading {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(TickerModel data)? data,
-    TResult? Function(Failure failure)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String failure)? error,
   }) {
     return loading?.call();
   }
@@ -397,8 +397,8 @@ class _$_TickerStateLoading implements _TickerStateLoading {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TickerModel data)? data,
-    TResult Function(Failure failure)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -458,7 +458,7 @@ abstract class _$$_TickerStateDataCopyWith<$Res> {
           _$_TickerStateData value, $Res Function(_$_TickerStateData) then) =
       __$$_TickerStateDataCopyWithImpl<$Res>;
   @useResult
-  $Res call({TickerModel data});
+  $Res call({List<Data> data});
 }
 
 /// @nodoc
@@ -476,9 +476,9 @@ class __$$_TickerStateDataCopyWithImpl<$Res>
   }) {
     return _then(_$_TickerStateData(
       data: null == data
-          ? _value.data
+          ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
-              as TickerModel,
+              as List<Data>,
     ));
   }
 }
@@ -486,10 +486,14 @@ class __$$_TickerStateDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TickerStateData implements _TickerStateData {
-  const _$_TickerStateData({required this.data});
+  const _$_TickerStateData({required final List<Data> data}) : _data = data;
 
+  final List<Data> _data;
   @override
-  final TickerModel data;
+  List<Data> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
@@ -501,11 +505,12 @@ class _$_TickerStateData implements _TickerStateData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TickerStateData &&
-            (identical(other.data, data) || other.data == data));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -519,8 +524,8 @@ class _$_TickerStateData implements _TickerStateData {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TickerModel data) data,
-    required TResult Function(Failure failure) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String failure) error,
   }) {
     return data(this.data);
   }
@@ -531,8 +536,8 @@ class _$_TickerStateData implements _TickerStateData {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(TickerModel data)? data,
-    TResult? Function(Failure failure)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String failure)? error,
   }) {
     return data?.call(this.data);
   }
@@ -543,8 +548,8 @@ class _$_TickerStateData implements _TickerStateData {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TickerModel data)? data,
-    TResult Function(Failure failure)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -595,10 +600,10 @@ class _$_TickerStateData implements _TickerStateData {
 }
 
 abstract class _TickerStateData implements TickerState {
-  const factory _TickerStateData({required final TickerModel data}) =
+  const factory _TickerStateData({required final List<Data> data}) =
       _$_TickerStateData;
 
-  TickerModel get data;
+  List<Data> get data;
   @JsonKey(ignore: true)
   _$$_TickerStateDataCopyWith<_$_TickerStateData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -610,7 +615,7 @@ abstract class _$$_TickerStateErrorCopyWith<$Res> {
           _$_TickerStateError value, $Res Function(_$_TickerStateError) then) =
       __$$_TickerStateErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({Failure failure});
+  $Res call({String failure});
 }
 
 /// @nodoc
@@ -630,7 +635,7 @@ class __$$_TickerStateErrorCopyWithImpl<$Res>
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
+              as String,
     ));
   }
 }
@@ -641,7 +646,7 @@ class _$_TickerStateError implements _TickerStateError {
   const _$_TickerStateError({required this.failure});
 
   @override
-  final Failure failure;
+  final String failure;
 
   @override
   String toString() {
@@ -671,8 +676,8 @@ class _$_TickerStateError implements _TickerStateError {
     required TResult Function() offline,
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(TickerModel data) data,
-    required TResult Function(Failure failure) error,
+    required TResult Function(List<Data> data) data,
+    required TResult Function(String failure) error,
   }) {
     return error(failure);
   }
@@ -683,8 +688,8 @@ class _$_TickerStateError implements _TickerStateError {
     TResult? Function()? offline,
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(TickerModel data)? data,
-    TResult? Function(Failure failure)? error,
+    TResult? Function(List<Data> data)? data,
+    TResult? Function(String failure)? error,
   }) {
     return error?.call(failure);
   }
@@ -695,8 +700,8 @@ class _$_TickerStateError implements _TickerStateError {
     TResult Function()? offline,
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(TickerModel data)? data,
-    TResult Function(Failure failure)? error,
+    TResult Function(List<Data> data)? data,
+    TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -747,10 +752,10 @@ class _$_TickerStateError implements _TickerStateError {
 }
 
 abstract class _TickerStateError implements TickerState {
-  const factory _TickerStateError({required final Failure failure}) =
+  const factory _TickerStateError({required final String failure}) =
       _$_TickerStateError;
 
-  Failure get failure;
+  String get failure;
   @JsonKey(ignore: true)
   _$$_TickerStateErrorCopyWith<_$_TickerStateError> get copyWith =>
       throw _privateConstructorUsedError;
