@@ -12,7 +12,7 @@ class TickerRepository implements BaseTickerRepository {
   Future<Either<Failure, TickerModel>> tickerRepo() async {
     String accessKey = FlavorConfig.instance!.values.accessKey;
     try {
-      final response = await dio.Dio().get("",
+      final response = await dio.Dio().get("http://api.marketstack.com/v1/tickers?access_key=$accessKey",
           options: dio.Options(sendTimeout: 2000, receiveTimeout: 2000));
 
       if (kDebugMode) {
