@@ -58,6 +58,13 @@ This layer contains my pages, widgets and utils for same
 For code generation i use [Freezed ][Freezed_link]
 
 
+## Screenshots
+![First Screenshot](images/1.png)
+![Second Screenshot](images/2.png)
+![Third Screenshot](images/3.png)
+![Fourth Screenshot](images/4.png)
+
+
 
 
 
