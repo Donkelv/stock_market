@@ -55,7 +55,7 @@ This layer contains my pages, widgets and utils for same
 ## Code generation
 
 
-For code generation is use [Freezed ][Freezed_link]
+For code generation i use [Freezed ][Freezed_link]
 
 
 

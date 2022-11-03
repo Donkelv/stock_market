@@ -7,7 +7,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   FlavorConfig(
       flavor: Flavor.production,
-      values: FlavorValues(accessKey: "06eec0d8920598014b2b3322ce746800"));
+      values: FlavorValues(accessKey: "844f4020dea5a0bfbf3cc2041d9d0d99"));
 
   runApp(const NavigatorPath());
 }
