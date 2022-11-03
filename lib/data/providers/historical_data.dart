@@ -14,3 +14,8 @@ final historicalDataStateProvider =
 final historicalDataProvider = Provider<BaseHistoricalDataRepository>((ref) {
   return HistoricalDataRepository();
 });
+
+
+final dateRangeProvider = StateProvider.autoDispose<String?>((ref) {
+  return ;
+});

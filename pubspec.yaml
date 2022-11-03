@@ -46,6 +46,7 @@ dependencies:
   build_runner: ^2.3.2
   syncfusion_flutter_charts: ^20.3.52
   intl: ^0.17.0
+  syncfusion_flutter_datepicker: ^20.3.52
 
 dev_dependencies:
   flutter_test:
