@@ -58,11 +58,11 @@ class TickerChangeNotifier extends ChangeNotifier {
       notifyListeners();
     }
 
-    print(localData!.length);
+    //print(localData.length);
   }
 
   void filterTickers({required String characters}) {
-    filterData = localData!
+    filterData = localData
         .where((element) =>
             element.name!.toLowerCase().contains(characters.toLowerCase()))
         .toList();

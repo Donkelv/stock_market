@@ -29,10 +29,10 @@ class HistoricalDataModel {
 }
 
 class Pagination {
-  int? limit;
-  int? offset;
-  int? count;
-  int? total;
+  num? limit;
+  num? offset;
+  num? count;
+  num? total;
 
   Pagination({this.limit, this.offset, this.count, this.total});
 
@@ -54,18 +54,18 @@ class Pagination {
 }
 
 class Data {
-  double? open;
-  double? high;
-  double? low;
-  double? close;
-  int? volume;
-  double? adjHigh;
-  double? adjLow;
-  double? adjClose;
-  double? adjOpen;
-  int? adjVolume;
-  int? splitFactor;
-  int? dividend;
+  num? open;
+  num? high;
+  num? low;
+  num? close;
+  num? volume;
+  num? adjHigh;
+  num? adjLow;
+  num? adjClose;
+  num? adjOpen;
+  num? adjVolume;
+  num? splitFactor;
+  num? dividend;
   String? symbol;
   String? exchange;
   String? date;

@@ -1,8 +1,3 @@
-
-
-
-
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stock_market/data/utils/exports.dart';
@@ -14,10 +9,13 @@ import 'package:dio/dio.dart' as dio;
 
 class HistoricalDataRepository implements BaseHistoricalDataRepository {
   @override
-  Future<Either<Failure, HistoricalDataModel>> historicalData() async {
-     String accessKey = FlavorConfig.instance!.values.accessKey;
-     try {
-      final response = await dio.Dio().get("",
+  Future<Either<Failure, HistoricalDataModel>> historicalData(
+      symbol, dateFrom, dateTo) async {
+    String accessKey = FlavorConfig.instance!.values.accessKey;
+    debugPrint("repository");
+    try {
+      final response = await dio.Dio().get(
+          "http://api.marketstack.com/v1/eod?access_key=$accessKey&symbols=$symbol&date_from=${dateFrom ?? ""}&date_to=${dateTo ?? ""}",
           options: dio.Options(sendTimeout: 2000, receiveTimeout: 2000));
 
       if (kDebugMode) {

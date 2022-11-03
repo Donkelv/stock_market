@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:stock_market/data/providers/historical_data.dart';
 
 import 'package:stock_market/data/providers/ticker.dart';
 import 'package:stock_market/domain/entities/ticker.dart';
+import 'package:stock_market/presentation/pages/ticker_page.dart';
 
 import 'package:stock_market/presentation/utils/color_const.dart';
 import 'package:stock_market/presentation/utils/theme.dart';
@@ -45,7 +47,7 @@ class Home extends StatelessWidget {
                 ),
                 Text(
                   'Stocks',
-                  style: semiLargeTextInter(),
+                  style: largeTextInter(),
                 ),
                 SizedBox(
                   height: 5.0.h,
@@ -106,57 +108,101 @@ class _StockListState extends ConsumerState<StockList> {
     return Expanded(
       child: ticker.when(
         offline: () {
-          return Align(
-            alignment: Alignment.center,
-            child: Icon(
-              Icons.signal_cellular_off_outlined,
-              color: ColorConst().gunMetalgray,
-              size: 100.0.sp,
-            ),
-          );
+          return const OfflineWidget();
         },
         initial: () {
-          return Align(
-            alignment: Alignment.center,
-            child: CircularProgressIndicator(
-                strokeWidth: 3.0,
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(ColorConst().gunMetalgray)),
-          );
+          return const InitialWidget();
         },
         loading: () {
-          return Align(
-            alignment: Alignment.center,
-            child: CircularProgressIndicator(
-                strokeWidth: 3.0,
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(ColorConst().gunMetalgray)),
-          );
+          return const LoadingWidget();
         },
         data: (data) {
           return const StockListWidget();
         },
         error: (error) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.error_outline_rounded,
-                color: ColorConst().gunMetalgray,
-                size: 100.0.sp,
-              ),
-              SizedBox(
-                height: 15.0.h,
-              ),
-              Text(
-                error,
-                textAlign: TextAlign.center,
-                style: normalText().copyWith(color: ColorConst().gunMetalgray),
-              ),
-            ],
-          );
+          return CustomErrorWidget(error: error,);
         },
+      ),
+    );
+  }
+}
+
+class CustomErrorWidget extends StatelessWidget {
+  const CustomErrorWidget({
+    Key? key,
+    required this.error,
+  }) : super(key: key);
+  final String error;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          Icons.error_outline_rounded,
+          color: ColorConst().gunMetalgray,
+          size: 100.0.sp,
+        ),
+        SizedBox(
+          height: 15.0.h,
+        ),
+        Text(
+          error,
+          textAlign: TextAlign.center,
+          style: normalText().copyWith(color: ColorConst().gunMetalgray),
+        ),
+      ],
+    );
+  }
+}
+
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: CircularProgressIndicator(
+          strokeWidth: 3.0,
+          valueColor: AlwaysStoppedAnimation<Color>(ColorConst().gunMetalgray)),
+    );
+  }
+}
+
+class InitialWidget extends StatelessWidget {
+  const InitialWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: CircularProgressIndicator(
+          strokeWidth: 3.0,
+          valueColor: AlwaysStoppedAnimation<Color>(ColorConst().gunMetalgray)),
+    );
+  }
+}
+
+class OfflineWidget extends StatelessWidget {
+  const OfflineWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: Icon(
+        Icons.signal_cellular_off_outlined,
+        color: ColorConst().gunMetalgray,
+        size: 100.0.sp,
       ),
     );
   }
@@ -181,17 +227,29 @@ class StockListWidget extends ConsumerWidget {
             child: Material(
               type: MaterialType.transparency,
               child: InkWell(
-                onTap: (){
+                onTap: () {
+                  ref
+                      .watch(historicalDataStateProvider.notifier)
+                      .historicalData(symbol: localData[index].symbol!);
+                      
+                  ref.watch(selectedTickerProvider.notifier).state =
+                      localData[index];
                   
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const TickerDetailsPage()));
                 },
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(vertical: 10.0.h),
+                  padding: EdgeInsets.symmetric(vertical: 10.0.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        localData[index].symbol!, style: largeTextInter(), ),
+                        localData[index].symbol!,
+                        style: semiLargeTextInter(),
+                      ),
                       SizedBox(
                         height: 5.0.h,
                       ),

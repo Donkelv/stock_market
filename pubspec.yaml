@@ -44,6 +44,8 @@ dependencies:
   dartz: ^0.10.1
   connectivity_plus: ^2.3.9
   build_runner: ^2.3.2
+  syncfusion_flutter_charts: ^20.3.52
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
