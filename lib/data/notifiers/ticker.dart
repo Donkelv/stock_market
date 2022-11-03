@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stock_market/data/providers/ticker.dart';
 import 'package:stock_market/data/utils/exports.dart';
 import 'package:stock_market/domain/abstract/ticker.dart';
 import 'package:stock_market/domain/entities/ticker.dart';
 import 'package:stock_market/domain/freezed/ticker.dart';
+import 'package:stock_market/presentation/utils/color_const.dart';
 
 class TickerNotifier extends StateNotifier<TickerState> {
   TickerNotifier({
@@ -25,6 +27,15 @@ class TickerNotifier extends StateNotifier<TickerState> {
       state = const TickerState.initial();
 
       if (result == ConnectivityResult.none) {
+        Fluttertoast.showToast(
+            msg:
+                "Device offline",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: ColorConst().jetBlack,
+            textColor: ColorConst().white,
+            fontSize: 14.0.sp);
         state = const TickerState.offline();
       } else {
         final response = await _baseTickerRepository.tickerRepo();

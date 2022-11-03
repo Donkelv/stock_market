@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:intl/intl.dart';
 import 'package:stock_market/data/providers/ticker.dart';
 import 'package:stock_market/data/utils/exports.dart';
@@ -17,12 +19,12 @@ class DatePickerRangeSelector extends ConsumerStatefulWidget {
 
 class _DatePickerRangeSelectorState
     extends ConsumerState<DatePickerRangeSelector> {
-  String _selectedDate = '';
+
   String _startDate = '';
   String _endDate = '';
-  String _dateCount = '';
+
   String _range = '';
-  String _rangeCount = '';
+
 
   void _onSubmit(Object? value) {
     debugPrint(_startDate);
@@ -61,13 +63,7 @@ class _DatePickerRangeSelectorState
         _startDate = DateFormat('yyyy-MM-dd').format(args.value.startDate);
         _endDate = DateFormat('yyyy-MM-dd')
             .format(args.value.endDate ?? args.value.startDate);
-      } else if (args.value is DateTime) {
-        _selectedDate = args.value.toString();
-      } else if (args.value is List<DateTime>) {
-        _dateCount = args.value.length.toString();
-      } else {
-        _rangeCount = args.value.length.toString();
-      }
+      } 
     });
   }
 
