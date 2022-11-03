@@ -1,16 +1,76 @@
-# stock_market
+# Stock Market
 
-A new Flutter project.
 
-## Getting Started
+[![fvm][fvm_badge]][fvm_link]
+[<img src="https://riverpod.dev/img/logo.png" height="25" width="30" />][Riverpod_link]
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Getting Started 🚀
+
+This project contains 2 flavors:
+
+- development
+- production
+
+
+
+To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the following commands:
+
+```sh
+# Development
+$ flutter run -t lib/main_dev.dart 
+
+# Production
+$ flutter run -t lib/main_prod.dart 
+
+```
+
+## State Management
+
+
+This project uses Riverpod for state management [<img src="https://riverpod.dev/img/logo.png" height="25" width="30" />][Riverpod_link]
+
+
+## Architecture
+
+This project uses clean architecture. The clean architecture will divide the Flutter project into 3 main layers namely:
+
+- data
+- domain
+- presentation
+
+## data layer
+The data layer consists of my notifiers, providers and few utils
+
+## domain layer
+The domain layer consists of my core logic, my entities, api requests and code generation for my classes
+
+## presentation layer
+This layer contains my pages, widgets and utils for same
+
+
+
+## Code generation
+
+
+For code generation is use [Freezed ][Freezed_link]
+
+
+
+
+
+
+
+
+
+
+[Freezed_link]: https://pub.dev/packages/freezed
+[Riverpod_Badge]: https://riverpod.dev/img/logo.png
+[Riverpod_link]: https://pub.dev/packages/flutter_riverpod
+[intl_link]: https://pub.dev/packages/intl
+[Firebase_link]: https://pub.dev/packages/firebase_core
+[fvm_badge]: https://fvm.app/img/logo.svg
+[fvm_link]: https://fvm.app/
+
