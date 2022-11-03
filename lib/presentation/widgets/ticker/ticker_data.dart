@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:stock_market/data/utils/exports.dart';
 import 'package:stock_market/domain/entities/ticker.dart';
-import 'package:stock_market/presentation/pages/ticker_page.dart';
 import 'package:stock_market/presentation/utils/color_const.dart';
 import 'package:stock_market/presentation/utils/theme.dart';
 import 'package:stock_market/domain/entities/historical_data.dart'

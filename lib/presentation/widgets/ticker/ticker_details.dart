@@ -5,7 +5,6 @@
 import 'package:stock_market/data/providers/historical_data.dart';
 import 'package:stock_market/data/providers/ticker.dart';
 import 'package:stock_market/data/utils/exports.dart';
-import 'package:stock_market/presentation/pages/ticker_page.dart';
 import 'package:stock_market/presentation/widgets/initial_widget.dart';
 import 'package:stock_market/presentation/widgets/loading_widget.dart';
 import 'package:stock_market/presentation/widgets/offline_widget.dart';

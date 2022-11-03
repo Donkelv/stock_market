@@ -1,21 +1,8 @@
-import 'package:intl/intl.dart';
-import 'package:stock_market/data/providers/historical_data.dart';
-import 'package:stock_market/data/providers/ticker.dart';
 import 'package:stock_market/data/utils/exports.dart';
-
-import 'package:stock_market/domain/entities/ticker.dart';
-import 'package:stock_market/presentation/pages/date_picker.dart';
-import 'package:stock_market/presentation/pages/home_page.dart';
 import 'package:stock_market/presentation/utils/color_const.dart';
-import 'package:stock_market/presentation/utils/theme.dart';
+
 import 'package:stock_market/presentation/widgets/ticker/ticker_details.dart';
 import 'package:stock_market/presentation/widgets/ticker/ticker_header.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-
-import '../widgets/custom_error_widget.dart';
-import '../widgets/initial_widget.dart';
-import '../widgets/loading_widget.dart';
-import '../widgets/offline_widget.dart';
 
 
 class TickerDetailsPage extends StatelessWidget {
