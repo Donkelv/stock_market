@@ -10,7 +10,7 @@ import 'package:stock_market/presentation/pages/home_page.dart';
 import 'package:stock_market/presentation/utils/color_const.dart';
 import 'package:stock_market/presentation/utils/theme.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
 
 class TickerDetailsPage extends StatelessWidget {
   const TickerDetailsPage({Key? key}) : super(key: key);
@@ -50,6 +50,10 @@ class TickerDetailsPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 class TickerDetails extends ConsumerWidget {
   const TickerDetails({

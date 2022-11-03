@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:searchfield/searchfield.dart';
 import 'package:stock_market/data/providers/historical_data.dart';
 
 import 'package:stock_market/data/providers/ticker.dart';
@@ -120,7 +121,9 @@ class _StockListState extends ConsumerState<StockList> {
           return const StockListWidget();
         },
         error: (error) {
-          return CustomErrorWidget(error: error,);
+          return CustomErrorWidget(
+            error: error,
+          );
         },
       ),
     );
@@ -231,10 +234,10 @@ class StockListWidget extends ConsumerWidget {
                   ref
                       .watch(historicalDataStateProvider.notifier)
                       .historicalData(symbol: localData[index].symbol!);
-                      
+
                   ref.watch(selectedTickerProvider.notifier).state =
                       localData[index];
-                  
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -267,8 +270,8 @@ class StockListWidget extends ConsumerWidget {
   }
 }
 
-class CustomSearchField extends StatelessWidget {
-  const CustomSearchField({
+class CustomSearchField extends ConsumerStatefulWidget {
+   const CustomSearchField({
     Key? key,
     required this.size,
   }) : super(key: key);
@@ -276,32 +279,63 @@ class CustomSearchField extends StatelessWidget {
   final Size size;
 
   @override
+  ConsumerState<CustomSearchField> createState() => _CustomSearchFieldState();
+}
+
+class _CustomSearchFieldState extends ConsumerState<CustomSearchField> {
+  final TextEditingController controller = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      width: size.width,
+      width: widget.size.width,
       decoration: BoxDecoration(
         color: ColorConst().gunMetalgray,
         borderRadius: BorderRadius.circular(10.0.w),
       ),
-      child: TextFormField(
-        keyboardType: TextInputType.name,
+      child: SearchField(
+        controller: controller,
+        suggestions: ref.watch(tickerChangeNotifierProvider.notifier).localData.map((e) => SearchFieldListItem<Data>(e.name!, item: e, child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0.w),
+                  child: Text(
+                    e.name!,
+                    style: normalText(),
+                  ),
+                ),)).toList(),
+                suggestionState: Suggestion.expand,
+                suggestionsDecoration: BoxDecoration(
+                  color: ColorConst().gunMetalgray,
+                ),
+        textInputAction: TextInputAction.next,
+        hasOverlay: false,
 
-        //controller: controller,
-
-        onChanged: (String value) {},
-        style: normalText().copyWith(color: ColorConst().mistyBlue),
-        decoration: InputDecoration(
+        searchStyle: normalText(),
+        searchInputDecoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search_rounded,
             color: ColorConst().mistyBlue,
           ),
-          // contentPadding: EdgeInsets.symmetric(
-          //     vertical: 10.0.h, horizontal: 14.0.w),
+          
           hintText: "Search",
           hintStyle: normalText().copyWith(color: ColorConst().mistyBlue),
 
           border: InputBorder.none,
         ),
+        onSuggestionTap: (SearchFieldListItem data){
+          setState(() {
+             ref
+                .watch(historicalDataStateProvider.notifier)
+                .historicalData(symbol: data.item!.symbol!);
+
+            ref.watch(selectedTickerProvider.notifier).state = data.item!;
+
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const TickerDetailsPage()));
+          });
+         
+        },
       ),
     );
   }
